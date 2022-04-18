@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 from bokeh.plotting import figure, output_file, save
 from bokeh.models import DatetimeTickFormatter, ColumnDataSource
-from midimax_compression import compress_series
+from midimax import compress_series
 
 # Create a time-series of sine wave
 n = 100000  # points
@@ -59,5 +59,6 @@ fig3 = figure(sizing_mode='stretch_both', tools='box_zoom,pan,reset')
 fig3.line(x=ts_data.index, y=ts_data.values, line_width=2)
 fig3.line(x=ts_data_compressed.index, y=ts_data_compressed.values, line_color='green', line_dash='dashed')
 fig3.scatter(x=ts_data_compressed.index, y=ts_data_compressed.values, marker='circle', size=8, color='green')
+fig3 = format_fig_axis(fig3)
 output_file('demo_output_before_and_after_compression.html')
 save(fig3)
