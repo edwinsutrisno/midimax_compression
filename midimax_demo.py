@@ -12,8 +12,9 @@ from bokeh.plotting import figure, output_file, save
 from bokeh.models import DatetimeTickFormatter, ColumnDataSource
 from midimax import compress_series
 
+# %%
 # Create a time-series of sine wave
-n = 100000  # points
+n = 1000  # points
 timesteps = pd.to_timedelta(np.arange(n), unit='s')
 timestamps = pd.to_datetime("2022-04-18 08:00:00") + timesteps
 
@@ -29,6 +30,7 @@ timer_sec = round(time.time() - timer_start, 2)
 print('Compression took', timer_sec, 'seconds.')
 
 
+# %%
 def format_fig_axis(fig):
     """Formatting the date stamps on the plot axis"""
     fig.xaxis.formatter = DatetimeTickFormatter(days=["%m/%d %H:%M:%S"],
@@ -39,6 +41,8 @@ def format_fig_axis(fig):
     fig.yaxis.axis_label = 'Series Value'
     return fig
 
+
+# %%
 
 # Plot before
 fig1 = figure(sizing_mode='stretch_both', tools='box_zoom,pan,reset')
